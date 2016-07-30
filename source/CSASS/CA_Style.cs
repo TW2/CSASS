@@ -83,6 +83,37 @@ namespace CSASS
             _4 = new CA_Color(_4thColor);
         }
 
+        public string GetRawLine()
+        {
+            string rawline =
+                "Style: " +
+                _name + "," +
+                _font.FontName + "," +
+                (int)_font.FontSize + "," +
+                "&H" + _1.ABGR + "," +
+                "&H" + _2.ABGR + "," +
+                "&H" + _3.ABGR + "," +
+                "&H" + _4.ABGR + "," +
+                _font.BoldInt + "," +
+                _font.ItalicInt + "," +
+                _font.UnderlineInt + "," +
+                _font.StrikeoutInt + "," +
+                _scaleX + "," +
+                _scaleY + "," +
+                _spacing + "," +
+                _angle + "," +
+                _borderstyle + "," +
+                _outline + "," +
+                _shadow + "," +
+                _alignment + "," +
+                _marginl + "," +
+                _marginr + "," +
+                _marginv + "," +
+                _encoding;
+
+            return rawline;
+        }
+
         public string Name
         {
             get { return _name; }

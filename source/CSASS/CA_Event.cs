@@ -48,6 +48,25 @@ namespace CSASS
             _text = table[9];
         }
 
+        public string GetRawLine()
+        {
+            string comment = _comment == true ? "Comment: " : "Dialogue: ";
+            string rawline =
+                comment + "," +
+                _layer + "," +
+                SetTime(_start) + "," +
+                SetTime(_end) + "," +
+                _style + "," +
+                _name_or_actor + "," +
+                _marginL + "," +
+                _marginR + "," +
+                _marginV + "," +
+                _effect + "," +
+                _text;
+
+            return rawline;
+        }
+
         private long GetTime(string rawTime)
         {
             string pat = @"(\d+):(\d+):(\d+).(\d+)";
