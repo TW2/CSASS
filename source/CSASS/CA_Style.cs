@@ -55,10 +55,10 @@ namespace CSASS
             _name = table[0];
             _fontname = table[1];
             _fontsize = table[2];
-            _1stColor = table[3];
-            _2ndColor = table[4];
-            _3rdColor = table[5];
-            _4thColor = table[6];
+            _1stColor = table[3].Substring("&H".Length);
+            _2ndColor = table[4].Substring("&H".Length);
+            _3rdColor = table[5].Substring("&H".Length);
+            _4thColor = table[6].Substring("&H".Length);
             _bold = table[7];
             _italic = table[8];
             _underline = table[9];
