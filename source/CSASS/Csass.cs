@@ -108,8 +108,22 @@ namespace CSASS
             }
         }
 
+        /// <summary>
+        /// Add a dialogue event to Events
+        /// </summary>
+        /// <param name="layer">Layer in integer</param>
+        /// <param name="start">Start in hh:mm:ss:cc format</param>
+        /// <param name="end">End in hh:mm:ss:cc format</param>
+        /// <param name="style">Name of the Style</param>
+        /// <param name="name_or_actor">A string</param>
+        /// <param name="marginL">An integer</param>
+        /// <param name="marginR">An integer</param>
+        /// <param name="marginV">An integer</param>
+        /// <param name="effect">A string</param>
+        /// <param name="text">Your text or karaoke</param>
+        /// <param name="index">Index of the event in Events or not if -1</param>
         public void AddDialogueEvent(int layer, string start, string end, string style, string name_or_actor,
-            int marginL, int marginR, int marginV, string effect, string text)
+            int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
             CA_Event cae = new CA_Event();
             cae.Comment = false;
@@ -123,11 +137,32 @@ namespace CSASS
             cae.MarginV = marginV;
             cae.Effect = effect;
             cae.Text = text;
-            events.Add(cae);
+            if (index != -1)
+            {
+                events.Insert(index, cae);
+            }
+            else
+            {
+                events.Add(cae);
+            }
         }
 
+        /// <summary>
+        /// Add a comment event to Events
+        /// </summary>
+        /// <param name="layer">Layer in integer</param>
+        /// <param name="start">Start in hh:mm:ss:cc format</param>
+        /// <param name="end">End in hh:mm:ss:cc format</param>
+        /// <param name="style">Name of the Style</param>
+        /// <param name="name_or_actor">A string</param>
+        /// <param name="marginL">An integer</param>
+        /// <param name="marginR">An integer</param>
+        /// <param name="marginV">An integer</param>
+        /// <param name="effect">A string</param>
+        /// <param name="text">Your text or karaoke</param>
+        /// <param name="index">Index of the event in Events or not if -1</param>
         public void AddCommentEvent(int layer, string start, string end, string style, string name_or_actor,
-            int marginL, int marginR, int marginV, string effect, string text)
+            int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
             CA_Event cae = new CA_Event();
             cae.Comment = true;
@@ -141,9 +176,20 @@ namespace CSASS
             cae.MarginV = marginV;
             cae.Effect = effect;
             cae.Text = text;
-            events.Add(cae);
+            if (index != -1)
+            {
+                events.Insert(index, cae);
+            }
+            else
+            {
+                events.Add(cae);
+            }
         }
 
+        /// <summary>
+        /// Remove an event from Events
+        /// </summary>
+        /// <param name="index">Index of the event in Events</param>
         public void RemoveEvent(int index)
         {
             events.RemoveAt(index);
