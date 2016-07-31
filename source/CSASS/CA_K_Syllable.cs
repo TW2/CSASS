@@ -35,7 +35,7 @@ namespace CSASS
             long min_letter_duration = _duration - (max_letter_duration * (syl.Length - 1));
             foreach (char c in syl)
             {
-                if(index > syl.Length)
+                if(index < syl.Length)
                 {
                     CA_K_Letter letter = new CA_K_Letter(
                         c.ToString(),
