@@ -45,6 +45,10 @@
     <Compile Include="CA_Event.cs" />
     <Compile Include="CA_Font.cs" />
     <Compile Include="CA_Infos.cs" />
+    <Compile Include="CA_Karaoke.cs" />
+    <Compile Include="CA_K_Letter.cs" />
+    <Compile Include="CA_K_Syllable.cs" />
+    <Compile Include="CA_Overrides.cs" />
     <Compile Include="CA_Style.cs" />
     <Compile Include="Csass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

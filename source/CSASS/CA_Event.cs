@@ -22,6 +22,8 @@ namespace CSASS
         private string _text = "";
         private bool _comment = false;
 
+        private CA_Karaoke kara = null;
+
         public CA_Event()
         {
 
@@ -46,6 +48,11 @@ namespace CSASS
             _marginV = Convert.ToInt32(table[7]);
             _effect = table[8];
             _text = table[9];
+
+            if (CA_Karaoke.HasKaraoke(_text))
+            {
+                kara = CA_Karaoke.Create(_text, _start, _end);
+            }
         }
 
         public string GetRawLine()
@@ -103,6 +110,20 @@ namespace CSASS
             string n = centi > 9 ? Convert.ToString(centi) : "0" + Convert.ToString(centi);
 
             return h + ":" + m + ":" + s + "." + n;
+        }
+
+        /// <summary>
+        /// Change text (and change karaoke)
+        /// </summary>
+        /// <param name="text">Your text</param>
+        public void ChangeText(string text)
+        {
+            _text = text;
+
+            if (CA_Karaoke.HasKaraoke(text))
+            {
+                kara = CA_Karaoke.Create(text, _start, _end);
+            }
         }
 
         public int Layer
@@ -179,6 +200,11 @@ namespace CSASS
         {
             get { return _comment; }
             set { _comment = value; }
+        }
+
+        public CA_Karaoke Karaoke
+        {
+            get { return kara; }
         }
     }
 }
