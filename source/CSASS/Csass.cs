@@ -108,6 +108,47 @@ namespace CSASS
             }
         }
 
+        public void AddDialogueEvent(int layer, string start, string end, string style, string name_or_actor,
+            int marginL, int marginR, int marginV, string effect, string text)
+        {
+            CA_Event cae = new CA_Event();
+            cae.Comment = false;
+            cae.Layer = layer;
+            cae.Start = cae.GetTime(start);
+            cae.End = cae.GetTime(end);
+            cae.Style = style;
+            cae.NameOrActor = name_or_actor;
+            cae.MarginL = marginL;
+            cae.MarginR = marginR;
+            cae.MarginV = marginV;
+            cae.Effect = effect;
+            cae.Text = text;
+            events.Add(cae);
+        }
+
+        public void AddCommentEvent(int layer, string start, string end, string style, string name_or_actor,
+            int marginL, int marginR, int marginV, string effect, string text)
+        {
+            CA_Event cae = new CA_Event();
+            cae.Comment = true;
+            cae.Layer = layer;
+            cae.Start = cae.GetTime(start);
+            cae.End = cae.GetTime(end);
+            cae.Style = style;
+            cae.NameOrActor = name_or_actor;
+            cae.MarginL = marginL;
+            cae.MarginR = marginR;
+            cae.MarginV = marginV;
+            cae.Effect = effect;
+            cae.Text = text;
+            events.Add(cae);
+        }
+
+        public void RemoveEvent(int index)
+        {
+            events.RemoveAt(index);
+        }
+
         public List<CA_Event> Events
         {
             get { return events; }

@@ -74,7 +74,7 @@ namespace CSASS
             return rawline;
         }
 
-        private long GetTime(string rawTime)
+        public long GetTime(string rawTime)
         {
             string pat = @"(\d+):(\d+):(\d+).(\d+)";
             Regex r = new Regex(pat, RegexOptions.IgnoreCase);
@@ -95,7 +95,7 @@ namespace CSASS
             return time;
         }
 
-        private string SetTime(long time)
+        public string SetTime(long time)
         {
             int hour = (int)(time / 3600000);
             int min = (int)((time - 3600000 * hour) / 60000);
