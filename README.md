@@ -19,17 +19,17 @@ ca.LoadASS(fullpath);
 Then add a Dialogue:
 ```c#
 //Add a new dialogue event to the end of the ca.Events list
-ca.AddDialogueEvent(0, 0:01:56.80, 0:01:58.09, "Default", "Sakura", 0, 0, 0, "", "Shannnnnnaro!");
+ca.AddDialogueEvent(0, "0:01:56.80", "0:01:58.09", "Default", "Sakura", 0, 0, 0, "", "Shannnnnnaro!");
 //Add a new dialogue event at the index in the ca.Events list
-ca.AddDialogueEvent(0, 0:01:56.80, 0:01:58.09, "Default", "Naruto", 0, 0, 0, "", "Sakura-chan!", 452);
+ca.AddDialogueEvent(0, "0:01:56.80", "0:01:58.09", "Default", "Naruto", 0, 0, 0, "", "Sakura-chan!", 452);
 ```
 
 Then add a Comment:
 ```c#
 //Add a new comment event to ca.Events
-ca.AddCommentEvent(0, 0:01:56.80, 0:01:58.09, "Default", "Sakura", 0, 0, 0, "", "Great battle");
+ca.AddCommentEvent(0, "0:01:56.80", "0:01:58.09", "Default", "Sakura", 0, 0, 0, "", "Great battle");
 //Add a new comment event at the index in the ca.Events list
-ca.AddCommentEvent(0, 0:01:56.80, 0:01:58.09, "Default", "Naruto", 0, 0, 0, "", "And the winner is:", 451);
+ca.AddCommentEvent(0, "0:01:56.80", "0:01:58.09", "Default", "Naruto", 0, 0, 0, "", "And the winner is:", 451);
 ```
 
 Then remove an event:
