@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CSASS
 {
-    public class Csass
+    public class Csass : ICloneable
     {
         private List<CA_Event> events = new List<CA_Event>();
         private List<CA_Style> styles = new List<CA_Style>();
@@ -15,7 +15,7 @@ namespace CSASS
 
         public Csass()
         {
-
+            
         }
 
         public void LoadASS(string path)
@@ -93,7 +93,7 @@ namespace CSASS
                     " PrimaryColour, SecondaryColour, OutlineColour, BackColour," + 
                     " Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle," + 
                     " BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding");
-                foreach(CA_Style sty in styles)
+                foreach (CA_Style sty in styles)
                 {
                     sw.WriteLine(sty.GetRawLine());
                 }
@@ -101,7 +101,7 @@ namespace CSASS
 
                 sw.WriteLine("[Events]");
                 sw.WriteLine("Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text");
-                foreach(CA_Event evt in events)
+                foreach (CA_Event evt in events)
                 {
                     sw.WriteLine(evt.GetRawLine());
                 }
@@ -209,5 +209,115 @@ namespace CSASS
         {
             get { return assinfos; }
         }
+
+        //public void LoadSample()
+        //{
+        //    UI.Sample sample = new UI.Sample();
+        //    sample.Init(this);
+        //    sample.Show();
+        //}
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public void PutStyle(string name, string fontname, string fontsize,
+            string firstcolor, string secondcolor, string thirdcolor, string fourthcolor,
+            string bold, string italic, string underline, string strikeout,
+            string scaleX, string scaleY, string spacing, string angleZ,
+            string borderstyle, string outline, string shadow, string alignment,
+            string marginL, string marginR, string marginV, string encoding, int index = -1)
+        {
+            CA_Style cas = new CA_Style();
+
+            bool containsName = false;
+            foreach(CA_Style sty in styles)
+            {
+                if(sty.Name == name)
+                {
+                    cas = sty;
+                    containsName = true;
+                    break;
+                }
+            }
+
+            if(containsName == false) { cas.Name = name; }
+            cas.Font = new CA_Font(fontname, fontsize, bold, italic, underline, strikeout);
+            cas.PrimaryColour = new CA_Color(firstcolor);
+            cas.KaraokeColour = new CA_Color(secondcolor);
+            cas.OutlineColour = new CA_Color(thirdcolor);
+            cas.BackColour = new CA_Color(fourthcolor);
+            cas.ScaleX = Convert.ToSingle(scaleX);
+            cas.ScaleY = Convert.ToSingle(scaleY);
+            cas.Spacing = Convert.ToInt32(spacing);
+            cas.Angle = Convert.ToSingle(angleZ);
+            cas.Borderline = Convert.ToInt32(borderstyle);
+            cas.Outline = Convert.ToSingle(outline);
+            cas.Shadow = Convert.ToSingle(shadow);
+            cas.Alignment = Convert.ToInt32(alignment);
+            cas.MarginL = Convert.ToInt32(marginL);
+            cas.MarginR = Convert.ToInt32(marginR);
+            cas.MarginV = Convert.ToInt32(marginV);
+            cas.Encoding = Convert.ToInt32(encoding);
+
+            if (index != -1)
+            {
+                styles.Insert(index, cas);
+            }
+            else
+            {
+                styles.Add(cas);
+            }
+        }
+
+        public void PutStyle(string name, CA_Font font,
+            CA_Color firstcolor, CA_Color secondcolor, CA_Color thirdcolor, CA_Color fourthcolor,
+            float scaleX, float scaleY, int spacing, float angleZ,
+            int borderstyle, float outline, float shadow, int alignment,
+            int marginL, int marginR, int marginV, int encoding, int index = -1)
+        {
+            CA_Style cas = new CA_Style();
+
+            bool containsName = false;
+            foreach (CA_Style sty in styles)
+            {
+                if (sty.Name == name)
+                {
+                    cas = sty;
+                    containsName = true;
+                    break;
+                }
+            }
+
+            if (containsName == false) { cas.Name = name; }
+            cas.Font = font;
+            cas.PrimaryColour = firstcolor;
+            cas.KaraokeColour = secondcolor;
+            cas.OutlineColour = thirdcolor;
+            cas.BackColour = fourthcolor;
+            cas.ScaleX = scaleX;
+            cas.ScaleY = scaleY;
+            cas.Spacing = spacing;
+            cas.Angle = angleZ;
+            cas.Borderline = borderstyle;
+            cas.Outline = outline;
+            cas.Shadow = shadow;
+            cas.Alignment = alignment;
+            cas.MarginL = marginL;
+            cas.MarginR = marginR;
+            cas.MarginV = marginV;
+            cas.Encoding = encoding;
+
+            if (index != -1)
+            {
+                styles.Insert(index, cas);
+            }
+            else
+            {
+                styles.Add(cas);
+            }
+        }
+
     }
 }

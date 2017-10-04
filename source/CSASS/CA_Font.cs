@@ -29,6 +29,17 @@ namespace CSASS
             Configure(fontname, fontsize, bold, italic, underline, strikeout);
         }
 
+        public CA_Font(Font font)
+        {
+            Configure(
+                font.Name, 
+                font.Size, 
+                ConvertBoolean(font.Bold),
+                ConvertBoolean(font.Italic),
+                ConvertBoolean(font.Underline),
+                ConvertBoolean(font.Strikeout));
+        }
+
         private void Configure(string fontname = "Arial", float fontsize = 12f,
             int bold = 0, int italic = 0, int underline = 0, int strikeout = 0)
         {

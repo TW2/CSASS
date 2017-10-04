@@ -59,7 +59,7 @@ namespace CSASS
         {
             string comment = _comment == true ? "Comment: " : "Dialogue: ";
             string rawline =
-                comment + "," +
+                comment + 
                 _layer + "," +
                 SetTime(_start) + "," +
                 SetTime(_end) + "," +

@@ -18,6 +18,9 @@ namespace CSASS
 
         public CA_Color(string abgr)
         {
+            abgr = abgr.Replace("&", "");
+            abgr = abgr.Replace("H", "");
+
             if (abgr.Length == 8)
             {
                 _color = ABGRToColor(abgr);
