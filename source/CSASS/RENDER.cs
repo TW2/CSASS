@@ -19,13 +19,13 @@ namespace Binary.CSASS
 
         }
 
-        public static Bitmap GetImage(Csass main, string videoPath, long milliseconds, double fps = 23.976d)
+        public static Bitmap GetImage(Csass main, string videoPath, long milliseconds, int offset = 0, double fps = 23.976d)
         {
             //Create a clip
             AviSynthClip clip = asse.ParseScript(GetScript(main, videoPath));
 
             //Return an image
-            return AvisynthLoader.ReadFrameBitmap(clip, Convert.ToInt32(milliseconds / 1000 * fps));
+            return AvisynthLoader.ReadFrameBitmap(clip, Convert.ToInt32((double)milliseconds / 1000d * fps) + offset);
         }
 
         public static Bitmap GetImage(Csass main, string videoPath, int framePosition)
@@ -40,9 +40,8 @@ namespace Binary.CSASS
         private static string GetScript(Csass main, string videoPath)
         {
             string str = "";
-            str += "# Load plugin\n";
-            str += "LoadPlugin(\"" + appPath + "\\ffms2.dll\")\n";
             str += "# Load video\n";
+            str += "LoadPlugin(\"" + appPath + "\\ffms2.dll\")\n";            
             str += "FFVideoSource(\"" + videoPath + "\")\n";
 
             if(main.Events.Count > 0)
@@ -50,7 +49,8 @@ namespace Binary.CSASS
                 string assPathTemp = appPath + @"\temp.ass";
                 main.SaveASS(assPathTemp);
                 str += "# Load ASS\n";
-                str += "TextSubMod(\"" + assPathTemp + "\")\n";
+                str += "LoadPlugin(\"" + appPath + "\\xy-VSFilter.dll\")\n";
+                str += "TextSub(\"" + assPathTemp + "\")\n";
             }
 
             str += "ConvertToYV12()\n";

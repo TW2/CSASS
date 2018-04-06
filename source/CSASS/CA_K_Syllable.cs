@@ -30,37 +30,40 @@ namespace CSASS
 
             _letters.Clear();
 
-            long startlet = start; int index = 1;
-            long max_letter_duration = _duration / syl.Length;
-            long min_letter_duration = _duration - (max_letter_duration * (syl.Length - 1));
-            foreach (char c in syl)
+            if(syl.Length > 0)
             {
-                if(index < syl.Length)
+                long startlet = start; int index = 1;
+                long max_letter_duration = _duration / syl.Length;
+                long min_letter_duration = _duration - (max_letter_duration * (syl.Length - 1));
+                foreach (char c in syl)
                 {
-                    CA_K_Letter letter = new CA_K_Letter(
-                        c.ToString(),
-                        startlet,
-                        startlet + max_letter_duration,
-                        syl,
-                        text);
+                    if (index < syl.Length)
+                    {
+                        CA_K_Letter letter = new CA_K_Letter(
+                            c.ToString(),
+                            startlet,
+                            startlet + max_letter_duration,
+                            syl,
+                            text);
 
-                    _letters.Add(letter);
+                        _letters.Add(letter);
 
-                    startlet += max_letter_duration;
+                        startlet += max_letter_duration;
+                    }
+                    else
+                    {
+                        CA_K_Letter letter = new CA_K_Letter(
+                            c.ToString(),
+                            startlet,
+                            startlet + min_letter_duration,
+                            syl,
+                            text);
+
+                        _letters.Add(letter);
+                    }
+
+                    index++;
                 }
-                else
-                {
-                    CA_K_Letter letter = new CA_K_Letter(
-                        c.ToString(),
-                        startlet,
-                        startlet + min_letter_duration,
-                        syl,
-                        text);
-
-                    _letters.Add(letter);
-                }
-
-                index++;
             }
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CSASS
@@ -28,28 +29,32 @@ namespace CSASS
         {
             CA_Karaoke kara = new CA_Karaoke();
 
-            kara._syllables.Clear();
-
-            kara._text = text;
-            kara._start = start;
-            kara._end = end;
-            kara._duration = end - start;
-
-            string[] table = text.Split(new char[] { '{' });
-            long startsyl = 0;
-
-            foreach (string s in table)
+            if(HasKaraoke(text) == true)
             {
-                if (s.Length > 0)
+                kara._syllables.Clear();
+
+                kara._text = text;
+                kara._start = start;
+                kara._end = end;
+                kara._duration = end - start;
+
+                string ns;
+                ns = text.Replace("\\K", "\\k");
+                ns = ns.Replace("\\ko", "\\k");
+                ns = ns.Replace("\\kf", "\\k");
+
+                long startsyl = 0;
+
+                Regex r = new Regex(@"\{[\\k]{1}(\d+)\}(\w+)");
+                Match m = r.Match(ns);
+
+                while (m.Success)
                 {
-                    string ns = s.Replace("\\K", "\\k"); ns = ns.Replace("\\ko", "\\k"); ns = ns.Replace("\\kf", "\\k");
-                    string asss = ns.StartsWith("\\k") == true ? ns.Replace("\\k", "") : ns;
-                    string[] table2 = asss.Split(new char[] { '}' });
-                    long dur_centi = Convert.ToInt32(table2[0]);
+                    long dur_centi = Convert.ToInt32(m.Groups[1].Value);
                     long dur_milli = dur_centi * 10;
 
                     CA_K_Syllable syl = new CA_K_Syllable(
-                        table2[1],
+                        m.Groups[2].Value,
                         startsyl + start,
                         startsyl + start + dur_milli,
                         text);
@@ -57,6 +62,9 @@ namespace CSASS
                     kara._syllables.Add(syl);
 
                     startsyl += dur_milli;
+
+
+                    m.NextMatch();
                 }
             }
 
