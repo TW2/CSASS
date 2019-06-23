@@ -4,3 +4,8 @@ F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.csprojAssemblyReferenc
 F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.csproj.CoreCompileInputs.cache
 F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.dll
 F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.pdb
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\CSASS.dll
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\CSASS.pdb
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.csproj.CoreCompileInputs.cache
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.dll
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.pdb
