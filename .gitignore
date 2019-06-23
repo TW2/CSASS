@@ -340,4 +340,4 @@ ASALocalRun/
 healthchecksdb
 
 # StackDump
-*.stackdump
+sh.exe.stackdump
