@@ -9,3 +9,7 @@ F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\CSASS.pdb
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.csproj.CoreCompileInputs.cache
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.dll
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.pdb
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\AvisynthWrapper.dll
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\ffms2.dll
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\xy-VSFilter.dll
+F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\ffmsindex.exe

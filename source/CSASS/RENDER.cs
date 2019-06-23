@@ -1,22 +1,40 @@
 ﻿using AVS;
 using CSASS;
 using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Linq;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Binary.CSASS
 {
     public class RENDER
     {
         private static AviSynthScriptEnvironment asse = new AviSynthScriptEnvironment();
-        private static string appPath = System.Windows.Forms.Application.StartupPath;
+        private static string appPath = null;
 
         public RENDER()
         {
+            string processCmdLine = GetModuleFileName(IntPtr.Zero);
+            appPath = Path.GetDirectoryName(processCmdLine);
+        }
 
+        [DllImport("coredll", SetLastError = true)]
+        extern static uint GetModuleFileName(IntPtr hModule, StringBuilder lpFilename, [MarshalAs(UnmanagedType.U4)] int nSize);
+
+        static string GetModuleFileName(IntPtr hModule)
+        {
+
+            StringBuilder fileName = new StringBuilder(short.MaxValue);
+            uint retVal = GetModuleFileName(hModule, fileName, fileName.Capacity);
+
+            if (retVal == 0)
+            {
+                throw new Win32Exception();
+            }
+
+            return fileName.ToString();
         }
 
         public static Bitmap GetImage(Csass main, string videoPath, long milliseconds, int offset = 0, double fps = 23.976d)

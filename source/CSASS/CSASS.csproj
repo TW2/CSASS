@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvisynthWrapper.cs" />
     <Compile Include="CA_Color.cs" />
     <Compile Include="CA_Event.cs" />
     <Compile Include="CA_Font.cs" />
@@ -51,6 +52,21 @@
     <Compile Include="CA_Style.cs" />
     <Compile Include="Csass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RENDER.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AvisynthWrapper.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ffms2.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ffmsindex.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="xy-VSFilter.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
