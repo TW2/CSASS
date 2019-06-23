@@ -1,0 +1,6 @@
+F:\Dev\__GitHub_2018__\CSASS\source\CSASS\bin\Debug\CSASS.dll
+F:\Dev\__GitHub_2018__\CSASS\source\CSASS\bin\Debug\CSASS.pdb
+F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.csprojAssemblyReference.cache
+F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.csproj.CoreCompileInputs.cache
+F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.dll
+F:\Dev\__GitHub_2018__\CSASS\source\CSASS\obj\Debug\CSASS.pdb
