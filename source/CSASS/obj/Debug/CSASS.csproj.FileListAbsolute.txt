@@ -13,4 +13,3 @@ F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\AvisynthWrapper.dll
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\ffms2.dll
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\xy-VSFilter.dll
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\bin\Debug\ffmsindex.exe
-F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.csprojAssemblyReference.cache
