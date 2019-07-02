@@ -9,9 +9,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CSASS</RootNamespace>
     <AssemblyName>CSASS</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -21,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -40,7 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AvisynthWrapper.cs" />
+    <Compile Include="ASSNeo\Character.cs" />
+    <Compile Include="ASSNeo\Core.cs" />
     <Compile Include="CA_Color.cs" />
     <Compile Include="CA_Event.cs" />
     <Compile Include="CA_Font.cs" />
@@ -48,27 +53,20 @@
     <Compile Include="CA_Karaoke.cs" />
     <Compile Include="CA_K_Letter.cs" />
     <Compile Include="CA_K_Syllable.cs" />
-    <Compile Include="CA_Overrides.cs" />
     <Compile Include="CA_Style.cs" />
     <Compile Include="Csass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RENDER.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ffms2.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ffmsindex.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="xy-VSFilter.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="AvisynthWrapper.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <Compile Include="Tags\ATag.cs" />
+    <Compile Include="Tags\CA_TagContext.cs" />
+    <Compile Include="Tags\CA_TaggedText.cs" />
+    <Compile Include="Tags\ITag.cs" />
+    <Compile Include="Tags\List\Bold.cs" />
+    <Compile Include="Tags\List\Italic.cs" />
+    <Compile Include="Tags\List\Strikeout.cs" />
+    <Compile Include="Tags\List\Underline.cs" />
+    <Compile Include="Tags\TagFormat.cs" />
+    <Compile Include="Tags\TagFormatEnum.cs" />
+    <Compile Include="Tags\TagValue.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

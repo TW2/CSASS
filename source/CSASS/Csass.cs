@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 
 namespace CSASS
@@ -9,6 +10,9 @@ namespace CSASS
         private List<CA_Event> events = new List<CA_Event>();
         private List<CA_Style> styles = new List<CA_Style>();
         private CA_Infos assinfos = new CA_Infos();
+        private string videoPath = null;
+
+        public string VideoPath { get => videoPath; set => videoPath = value; }
 
         public Csass()
         {
@@ -316,5 +320,6 @@ namespace CSASS
             }
         }
 
+        
     }
 }
