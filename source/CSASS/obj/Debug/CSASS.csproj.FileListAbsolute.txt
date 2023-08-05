@@ -10,3 +10,9 @@ F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.csproj.CoreCompileInpu
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.dll
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.pdb
 F:\Dev\__GitHub_2019__\CSASS\source\CSASS\obj\Debug\CSASS.csprojAssemblyReference.cache
+D:\Dev\C#\CSASSv2\Librairie_v2\source\CSASS\bin\Debug\CSASS.dll
+D:\Dev\C#\CSASSv2\Librairie_v2\source\CSASS\bin\Debug\CSASS.pdb
+D:\Dev\C#\CSASSv2\Librairie_v2\source\CSASS\obj\Debug\CSASS.csproj.AssemblyReference.cache
+D:\Dev\C#\CSASSv2\Librairie_v2\source\CSASS\obj\Debug\CSASS.csproj.CoreCompileInputs.cache
+D:\Dev\C#\CSASSv2\Librairie_v2\source\CSASS\obj\Debug\CSASS.dll
+D:\Dev\C#\CSASSv2\Librairie_v2\source\CSASS\obj\Debug\CSASS.pdb

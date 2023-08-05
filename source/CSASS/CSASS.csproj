@@ -51,8 +51,8 @@
     <Compile Include="ASSA\ASS_Font.cs" />
     <Compile Include="ASSA\ASS_Infos.cs" />
     <Compile Include="ASSA\ASS_Karaoke.cs" />
-    <Compile Include="CA_K_Letter.cs" />
-    <Compile Include="CA_K_Syllable.cs" />
+    <Compile Include="ASSA\Karaoke\ASS_K_Letter.cs" />
+    <Compile Include="ASSA\Karaoke\ASS_K_Syllable.cs" />
     <Compile Include="ASSA\ASS_Style.cs" />
     <Compile Include="Common\C_Color.cs" />
     <Compile Include="Csass.cs" />
