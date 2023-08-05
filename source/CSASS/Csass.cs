@@ -7,9 +7,9 @@ namespace CSASS
 {
     public class Csass : ICloneable
     {
-        private List<CA_Event> events = new List<CA_Event>();
-        private List<CA_Style> styles = new List<CA_Style>();
-        private CA_Infos assinfos = new CA_Infos();
+        private List<ASS_Event> events = new List<ASS_Event>();
+        private List<ASS_Style> styles = new List<ASS_Style>();
+        private ASS_Infos assinfos = new ASS_Infos();
         private string videoPath = null;
 
         public string VideoPath { get => videoPath; set => videoPath = value; }
@@ -36,13 +36,13 @@ namespace CSASS
 
                     if (line.StartsWith("Style"))
                     {
-                        CA_Style asss = new CA_Style(line);
+                        ASS_Style asss = new ASS_Style(line);
                         styles.Add(asss);
                     }
 
                     if (line.StartsWith("Dialogue") | line.StartsWith("Comment"))
                     {
-                        CA_Event txt = new CA_Event(line);
+                        ASS_Event txt = new ASS_Event(line);
                         events.Add(txt);
                     }
                 }
@@ -94,7 +94,7 @@ namespace CSASS
                     " PrimaryColour, SecondaryColour, OutlineColour, BackColour," + 
                     " Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle," + 
                     " BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding");
-                foreach (CA_Style sty in styles)
+                foreach (ASS_Style sty in styles)
                 {
                     sw.WriteLine(sty.GetRawLine());
                 }
@@ -102,7 +102,7 @@ namespace CSASS
 
                 sw.WriteLine("[Events]");
                 sw.WriteLine("Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text");
-                foreach (CA_Event evt in events)
+                foreach (ASS_Event evt in events)
                 {
                     sw.WriteLine(evt.GetRawLine());
                 }
@@ -126,7 +126,7 @@ namespace CSASS
         public void AddDialogueEvent(int layer, string start, string end, string style, string name_or_actor,
             int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
-            CA_Event cae = new CA_Event();
+            ASS_Event cae = new ASS_Event();
             cae.Comment = false;
             cae.Layer = layer;
             cae.Start = cae.GetTime(start);
@@ -165,7 +165,7 @@ namespace CSASS
         public void AddCommentEvent(int layer, string start, string end, string style, string name_or_actor,
             int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
-            CA_Event cae = new CA_Event();
+            ASS_Event cae = new ASS_Event();
             cae.Comment = true;
             cae.Layer = layer;
             cae.Start = cae.GetTime(start);
@@ -196,17 +196,17 @@ namespace CSASS
             events.RemoveAt(index);
         }
 
-        public List<CA_Event> Events
+        public List<ASS_Event> Events
         {
             get { return events; }
         }
 
-        public List<CA_Style> Styles
+        public List<ASS_Style> Styles
         {
             get { return styles; }
         }
 
-        public CA_Infos Infos
+        public ASS_Infos Infos
         {
             get { return assinfos; }
         }
@@ -230,10 +230,10 @@ namespace CSASS
             string borderstyle, string outline, string shadow, string alignment,
             string marginL, string marginR, string marginV, string encoding, int index = -1)
         {
-            CA_Style cas = new CA_Style();
+            ASS_Style cas = new ASS_Style();
 
             bool containsName = false;
-            foreach(CA_Style sty in styles)
+            foreach(ASS_Style sty in styles)
             {
                 if(sty.Name == name)
                 {
@@ -244,11 +244,11 @@ namespace CSASS
             }
 
             if(containsName == false) { cas.Name = name; }
-            cas.Font = new CA_Font(fontname, fontsize, bold, italic, underline, strikeout);
-            cas.PrimaryColour = new CA_Color(firstcolor);
-            cas.KaraokeColour = new CA_Color(secondcolor);
-            cas.OutlineColour = new CA_Color(thirdcolor);
-            cas.BackColour = new CA_Color(fourthcolor);
+            cas.Font = new ASS_Font(fontname, fontsize, bold, italic, underline, strikeout);
+            cas.PrimaryColour = ASS_Color.create(firstcolor);
+            cas.KaraokeColour = ASS_Color.create(secondcolor);
+            cas.OutlineColour = ASS_Color.create(thirdcolor);
+            cas.BackColour = ASS_Color.create(fourthcolor);
             cas.ScaleX = Convert.ToSingle(scaleX);
             cas.ScaleY = Convert.ToSingle(scaleY);
             cas.Spacing = Convert.ToInt32(spacing);
@@ -272,16 +272,16 @@ namespace CSASS
             }
         }
 
-        public void PutStyle(string name, CA_Font font,
-            CA_Color firstcolor, CA_Color secondcolor, CA_Color thirdcolor, CA_Color fourthcolor,
+        public void PutStyle(string name, ASS_Font font,
+            ASS_Color firstcolor, ASS_Color secondcolor, ASS_Color thirdcolor, ASS_Color fourthcolor,
             float scaleX, float scaleY, int spacing, float angleZ,
             int borderstyle, float outline, float shadow, int alignment,
             int marginL, int marginR, int marginV, int encoding, int index = -1)
         {
-            CA_Style cas = new CA_Style();
+            ASS_Style cas = new ASS_Style();
 
             bool containsName = false;
-            foreach (CA_Style sty in styles)
+            foreach (ASS_Style sty in styles)
             {
                 if (sty.Name == name)
                 {

@@ -38,14 +38,14 @@ namespace CSASS.Tags
                 Graphics g = Graphics.FromImage(bmp);
 
                 // Collect the events for time
-                List<CA_Event> evList = GetEventAtMilliseconds(milliseconds);
+                List<ASS_Event> evList = GetEventAtMilliseconds(milliseconds);
 
                 // Draw
-                foreach (CA_Event ev in evList)
+                foreach (ASS_Event ev in evList)
                 {
                     // Event parameters
-                    CA_Style style = GetStyle(ev);
-                    CA_Font font = style.Font;
+                    ASS_Style style = GetStyle(ev);
+                    ASS_Font font = style.Font;
 
                     // Decompose #1 - \N
                     string[] lines = GetLines(ev);
@@ -64,12 +64,12 @@ namespace CSASS.Tags
             return null;
         }
 
-        private List<CA_Event> GetEventAtMilliseconds(long ms)
+        private List<ASS_Event> GetEventAtMilliseconds(long ms)
         {
-            List<CA_Event> list = new List<CA_Event>();
+            List<ASS_Event> list = new List<ASS_Event>();
 
             // Retrieve event (data) for this time
-            foreach (CA_Event ev in ca.Events)
+            foreach (ASS_Event ev in ca.Events)
             {
                 if (ev.Start <= ms && ms < ev.End)
                 {
@@ -80,10 +80,10 @@ namespace CSASS.Tags
             return list;
         }
 
-        private CA_Style GetStyle(CA_Event ev)
+        private ASS_Style GetStyle(ASS_Event ev)
         {
-            CA_Style style = new CA_Style();
-            foreach (CA_Style s in ca.Styles)
+            ASS_Style style = new ASS_Style();
+            foreach (ASS_Style s in ca.Styles)
             {
                 if (s.Name == ev.Style)
                 {
@@ -95,7 +95,7 @@ namespace CSASS.Tags
             return style;
         }
 
-        private string[] GetLines(CA_Event ev)
+        private string[] GetLines(ASS_Event ev)
         {
             return ev.Text.Split(new string[] { "\\N" }, StringSplitOptions.None);
         }

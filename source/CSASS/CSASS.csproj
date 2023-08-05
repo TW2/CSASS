@@ -46,14 +46,15 @@
   <ItemGroup>
     <Compile Include="ASSNeo\Character.cs" />
     <Compile Include="ASSNeo\Core.cs" />
-    <Compile Include="CA_Color.cs" />
-    <Compile Include="CA_Event.cs" />
-    <Compile Include="CA_Font.cs" />
-    <Compile Include="CA_Infos.cs" />
-    <Compile Include="CA_Karaoke.cs" />
+    <Compile Include="ASSA\ASS_Color.cs" />
+    <Compile Include="ASSA\ASS_Event.cs" />
+    <Compile Include="ASSA\ASS_Font.cs" />
+    <Compile Include="ASSA\ASS_Infos.cs" />
+    <Compile Include="ASSA\ASS_Karaoke.cs" />
     <Compile Include="CA_K_Letter.cs" />
     <Compile Include="CA_K_Syllable.cs" />
-    <Compile Include="CA_Style.cs" />
+    <Compile Include="ASSA\ASS_Style.cs" />
+    <Compile Include="Common\C_Color.cs" />
     <Compile Include="Csass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tags\ATag.cs" />
@@ -67,6 +68,9 @@
     <Compile Include="Tags\TagFormat.cs" />
     <Compile Include="Tags\TagFormatEnum.cs" />
     <Compile Include="Tags\TagValue.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ASSA\Event\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

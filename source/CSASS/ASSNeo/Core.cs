@@ -26,10 +26,10 @@ namespace CSASS.ASSNeo
             Graphics g = Graphics.FromImage(bmp);
 
             // Collect the events for time
-            List<CA_Event> list = new List<CA_Event>();
+            List<ASS_Event> list = new List<ASS_Event>();
 
             // Retrieve event (data) for this time
-            foreach (CA_Event ev in main.Events)
+            foreach (ASS_Event ev in main.Events)
             {
                 if(ev.Start <= ms && ms < ev.End)
                 {
@@ -38,11 +38,11 @@ namespace CSASS.ASSNeo
             }
 
             // Draw
-            foreach (CA_Event ev in list)
+            foreach (ASS_Event ev in list)
             {
                 // Retrieve style (font)
-                CA_Style style = new CA_Style();
-                foreach (CA_Style s in main.Styles)
+                ASS_Style style = new ASS_Style();
+                foreach (ASS_Style s in main.Styles)
                 {
                     if(s.Name == ev.Style)
                     {
@@ -52,7 +52,7 @@ namespace CSASS.ASSNeo
                 }
 
                 // Prepare font
-                CA_Font fnt = style.Font;
+                ASS_Font fnt = style.Font;
                 Font font = fnt.Font;
 
                 // Prepare path                
@@ -75,7 +75,7 @@ namespace CSASS.ASSNeo
             return bmp;
         }
 
-        private static void DrawPathes(Graphics g, List<CA_Event> evts, List<CA_Style> styles)
+        private static void DrawPathes(Graphics g, List<ASS_Event> evts, List<ASS_Style> styles)
         {
             
         }
