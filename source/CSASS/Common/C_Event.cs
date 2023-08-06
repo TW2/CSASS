@@ -30,5 +30,21 @@ namespace CSASS.Common
 
 
         public C_Event() { }
+
+        public static string fromEventTypeToString(EventType type)
+        {
+            switch (type)
+            {
+                case EventType.Dialogue: return "Dialogue";
+                case EventType.Comment: return "Comment";
+                case EventType.Picture: return "Picture";
+                case EventType.Movie: return "Movie";
+                case EventType.Sound: return "Sound";
+                case EventType.Command: return "Command";
+                case EventType.Vectors: return "Vectors";
+                case EventType._3D: return "3D";
+                default: return "Dialogue";
+            }
+        }
     }
 }
