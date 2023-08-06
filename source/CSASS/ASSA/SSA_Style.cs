@@ -74,8 +74,8 @@ namespace CSASS.ASSA
                 SecondaryColor.toStyleColor() + "," +
                 TertiaryColor.toStyleColor() + "," +
                 BackColor.toStyleColor() + "," +
-                (Bold ? "0" : "-1") + "," +
-                (Italic ? "0" : "-1") + "," +
+                (Bold ? "-1" : "0") + "," +
+                (Italic ? "-1" : "0") + "," +
                 Borderstyle + "," +
                 Outline + "," +
                 Shadow + "," +
