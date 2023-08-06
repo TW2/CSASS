@@ -10,7 +10,6 @@ namespace CSASS
         private long _duration = 0;
         private long _start = 0;
         private long _end = 0;
-        private List<ASS_K_Syllable> _syllables = new List<ASS_K_Syllable>();
 
         public ASS_Karaoke()
         {
@@ -28,7 +27,7 @@ namespace CSASS
 
             if(HasKaraoke(text) == true)
             {
-                kara._syllables.Clear();
+                //kara._syllables.Clear();
 
                 kara._text = text;
                 kara._start = start;
@@ -50,13 +49,13 @@ namespace CSASS
                     long dur_centi = Convert.ToInt32(m.Groups[1].Value);
                     long dur_milli = dur_centi * 10;
 
-                    ASS_K_Syllable syl = new ASS_K_Syllable(
-                        m.Groups[2].Value,
-                        startsyl + start,
-                        startsyl + start + dur_milli,
-                        text);
+                    //ASS_K_Syllable syl = new ASS_K_Syllable(
+                    //    m.Groups[2].Value,
+                    //    startsyl + start,
+                    //    startsyl + start + dur_milli,
+                    //    text);
 
-                    kara._syllables.Add(syl);
+                    //kara._syllables.Add(syl);
 
                     startsyl += dur_milli;
 
@@ -68,9 +67,9 @@ namespace CSASS
             return kara;
         }
 
-        public List<ASS_K_Syllable> Syllables
-        {
-            get { return _syllables; }
-        }
+        //public List<ASS_K_Syllable> Syllables
+        //{
+        //    get { return _syllables; }
+        //}
     }
 }

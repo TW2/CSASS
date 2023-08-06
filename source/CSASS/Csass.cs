@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using CSASS.Common;
 
 namespace CSASS
 {
@@ -29,7 +30,7 @@ namespace CSASS
             {
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (!line.StartsWith("Style") & !line.StartsWith("Dialogue") & !line.StartsWith("Comment"))
+                    if (!line.StartsWith("Style") && !line.StartsWith("Dialogue") && !line.StartsWith("Comment"))
                     {
                         assinfos.TryAdd(line);
                     }
@@ -40,7 +41,7 @@ namespace CSASS
                         styles.Add(asss);
                     }
 
-                    if (line.StartsWith("Dialogue") | line.StartsWith("Comment"))
+                    if (line.StartsWith("Dialogue") || line.StartsWith("Comment"))
                     {
                         ASS_Event txt = new ASS_Event(line);
                         events.Add(txt);
@@ -127,17 +128,18 @@ namespace CSASS
             int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
             ASS_Event cae = new ASS_Event();
-            cae.Comment = false;
-            cae.Layer = layer;
-            cae.Start = cae.GetTime(start);
-            cae.End = cae.GetTime(end);
-            cae.Style = style;
-            cae.NameOrActor = name_or_actor;
-            cae.MarginL = marginL;
-            cae.MarginR = marginR;
-            cae.MarginV = marginV;
-            cae.Effect = effect;
-            cae.Text = text;
+            cae.Event.Type = C_Event.EventType.Dialogue;
+            cae.Event.Layer = layer;
+            cae.Event.Start = C_Time.fromString(start);
+            cae.Event.End = C_Time.fromString(end);
+            cae.Event.Style = style;
+            cae.Event.Name = name_or_actor;
+            cae.Event.MarginL = marginL;
+            cae.Event.MarginR = marginR;
+            cae.Event.MarginV = marginV;
+            cae.Event.Effect = effect;
+            cae.Event.Text = text;
+
             if (index != -1)
             {
                 events.Insert(index, cae);
@@ -166,17 +168,17 @@ namespace CSASS
             int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
             ASS_Event cae = new ASS_Event();
-            cae.Comment = true;
-            cae.Layer = layer;
-            cae.Start = cae.GetTime(start);
-            cae.End = cae.GetTime(end);
-            cae.Style = style;
-            cae.NameOrActor = name_or_actor;
-            cae.MarginL = marginL;
-            cae.MarginR = marginR;
-            cae.MarginV = marginV;
-            cae.Effect = effect;
-            cae.Text = text;
+            cae.Event.Type = C_Event.EventType.Comment;
+            cae.Event.Layer = layer;
+            cae.Event.Start = C_Time.fromString(start);
+            cae.Event.End = C_Time.fromString(end);
+            cae.Event.Style = style;
+            cae.Event.Name = name_or_actor;
+            cae.Event.MarginL = marginL;
+            cae.Event.MarginR = marginR;
+            cae.Event.MarginV = marginV;
+            cae.Event.Effect = effect;
+            cae.Event.Text = text;
             if (index != -1)
             {
                 events.Insert(index, cae);
