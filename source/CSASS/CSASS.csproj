@@ -48,11 +48,13 @@
     <Compile Include="ASSA\ASS_Event.cs" />
     <Compile Include="ASSA\ASS_Font.cs" />
     <Compile Include="ASSA\ASS_Infos.cs" />
+    <Compile Include="ASSA\ASS_IO.cs" />
     <Compile Include="ASSA\ASS_Karaoke.cs" />
     <Compile Include="ASSA\ASS_Style.cs" />
     <Compile Include="ASSA\SSA_Color.cs" />
     <Compile Include="ASSA\SSA_Event.cs" />
     <Compile Include="ASSA\SSA_Infos.cs" />
+    <Compile Include="ASSA\SSA_IO.cs" />
     <Compile Include="ASSA\SSA_Style.cs" />
     <Compile Include="Common\C_Color.cs" />
     <Compile Include="Common\C_Event.cs" />
