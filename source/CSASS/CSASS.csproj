@@ -51,8 +51,10 @@
     <Compile Include="ASSA\ASS_Karaoke.cs" />
     <Compile Include="ASSA\ASS_Style.cs" />
     <Compile Include="ASSA\SSA_Color.cs" />
+    <Compile Include="ASSA\SSA_Style.cs" />
     <Compile Include="Common\C_Color.cs" />
     <Compile Include="Common\C_Event.cs" />
+    <Compile Include="Common\C_Font.cs" />
     <Compile Include="Common\C_Time.cs" />
     <Compile Include="Csass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -13,28 +13,28 @@ namespace CSASS.ASSA
             _color = new C_Color(Color.Red);
         }
 
-        public static SSA_Color create()
+        public static SSA_Color Create()
         {
             return new SSA_Color();
         }
 
-        public static SSA_Color create(Color color)
+        public static SSA_Color Create(Color color)
         {
             SSA_Color ac = new SSA_Color();
             ac._color.Color = color;
             return ac;
         }
 
-        public static SSA_Color create(int color)
+        public static SSA_Color Create(int color)
         {
             SSA_Color ac = new SSA_Color();
             ac._color.Color = Color.FromArgb(color);
             return ac;
         }
 
-        public static SSA_Color create(string color)
+        public static SSA_Color Create(string color)
         {
-            return create(Convert.ToInt32(color));
+            return Create(Convert.ToInt32(color));
         }
 
         public string toStyleColor()
