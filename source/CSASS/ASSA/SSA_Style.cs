@@ -1,10 +1,5 @@
-﻿using CSASS.Common;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSASS.ASSA
 {
@@ -15,29 +10,26 @@ namespace CSASS.ASSA
         //Bold, Italic, BorderStyle, Outline, Shadow, Alignment,
         //MarginL, MarginR, MarginV, AlphaLevel, Encoding
 
-        private string Name { get; set; } = "Default";
-        private string Fontname { get; set; } = "Arial";
-        private int Fontsize { get; set; } = 20;
-        private SSA_Color PrimaryColor { get; set; } = SSA_Color.Create(Color.White);
-        private SSA_Color SecondaryColor { get; set; } = SSA_Color.Create(Color.Yellow);
-        private SSA_Color TertiaryColor { get; set; } = SSA_Color.Create(Color.Cyan);
-        private SSA_Color BackColor { get; set; } = SSA_Color.Create(Color.Black);
-        private bool Bold { get; set; } = false;
-        private bool Italic { get; set; } = false;
-        private int Borderstyle { get; set; } = 1; // 1 = Normal, 3 or others = Box
-        private int Outline { get; set; } = 2;
-        private int Shadow { get; set; } = 2;
-        private int Alignment { get; set; } = 2;
-        private int MarginL { get; set; } = 0;
-        private int MarginR { get; set; } = 0;
-        private int MarginV { get; set; } = 0;
-        private int AlphaLevel { get; set; } = 0;
-        private int Encoding { get; set; } = 0;
+        public string Name { get; set; } = "Default";
+        public string Fontname { get; set; } = "Arial";
+        public int Fontsize { get; set; } = 20;
+        public SSA_Color PrimaryColor { get; set; } = SSA_Color.Create(Color.White);
+        public SSA_Color SecondaryColor { get; set; } = SSA_Color.Create(Color.Yellow);
+        public SSA_Color TertiaryColor { get; set; } = SSA_Color.Create(Color.Cyan);
+        public SSA_Color BackColor { get; set; } = SSA_Color.Create(Color.Black);
+        public bool Bold { get; set; } = false;
+        public bool Italic { get; set; } = false;
+        public int BorderStyle { get; set; } = 1; // 1 = Normal, 3 or others = Box
+        public int Outline { get; set; } = 2;
+        public int Shadow { get; set; } = 2;
+        public int Alignment { get; set; } = 2;
+        public int MarginL { get; set; } = 0;
+        public int MarginR { get; set; } = 0;
+        public int MarginV { get; set; } = 0;
+        public int AlphaLevel { get; set; } = 0;
+        public int Encoding { get; set; } = 0;
 
-        public SSA_Style()
-        {
-
-        }
+        public SSA_Style() { }
 
         public SSA_Style(string rawline)
         {
@@ -52,7 +44,7 @@ namespace CSASS.ASSA
             BackColor = SSA_Color.Create(table[6]);
             Bold = table[7] == "-1";
             Italic = table[8] == "-1";
-            Borderstyle = Convert.ToInt32(table[9]);
+            BorderStyle = Convert.ToInt32(table[9]);
             Outline = Convert.ToInt32(table[10]);
             Shadow = Convert.ToInt32(table[11]);
             Alignment = Convert.ToInt32(table[12]);
@@ -70,13 +62,13 @@ namespace CSASS.ASSA
                 Name + "," +
                 Fontname + "," +
                 Fontsize + "," +
-                PrimaryColor.toStyleColor() + "," +
-                SecondaryColor.toStyleColor() + "," +
-                TertiaryColor.toStyleColor() + "," +
-                BackColor.toStyleColor() + "," +
+                PrimaryColor.ToStyleColor() + "," +
+                SecondaryColor.ToStyleColor() + "," +
+                TertiaryColor.ToStyleColor() + "," +
+                BackColor.ToStyleColor() + "," +
                 (Bold ? "-1" : "0") + "," +
                 (Italic ? "-1" : "0") + "," +
-                Borderstyle + "," +
+                BorderStyle + "," +
                 Outline + "," +
                 Shadow + "," +
                 Alignment + "," +

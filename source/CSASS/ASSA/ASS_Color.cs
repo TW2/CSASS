@@ -5,26 +5,26 @@ namespace CSASS
 {
     public class ASS_Color
     {
-        private C_Color _color;
+        public C_Color CColor { get; set; }
 
         private ASS_Color()
         {
-            _color = new C_Color(Color.Red);
+            CColor = new C_Color(Color.Red);
         }
 
-        public static ASS_Color create()
+        public static ASS_Color Create()
         {
             return new ASS_Color();
         }
 
-        public static ASS_Color create(Color color)
+        public static ASS_Color Create(Color color)
         {
             ASS_Color ac = new ASS_Color();
-            ac._color.Color = color;
+            ac.CColor.Color = color;
             return ac;
         }
 
-        public static ASS_Color create(string abgr)
+        public static ASS_Color Create(string abgr)
         {
             ASS_Color ac = new ASS_Color();
 
@@ -33,35 +33,35 @@ namespace CSASS
 
             if (abgr.Length == 8)
             {
-                ac._color.ABGR = abgr;
+                ac.CColor.ABGR = abgr;
             }
             else if (abgr.Length == 6)
             {
-                ac._color.BGR = abgr;
+                ac.CColor.BGR = abgr;
             }
 
             return ac;
         }
 
-        public string toStyleColor()
+        public string ToStyleColor()
         {
-            return "&H" + C_Color.toString(_color.Color, C_Color.ColorMethod.ABGR);
+            return "&H" + C_Color.ToString(CColor.Color, C_Color.ColorMethod.ABGR);
         }
 
-        public string toInLineColor()
+        public string ToInLineColor()
         {
-            return "&H" + C_Color.toString(_color.Color, C_Color.ColorMethod.BGR) + "&";
+            return "&H" + C_Color.ToString(CColor.Color, C_Color.ColorMethod.BGR) + "&";
         }
 
-        public string toInLineAlpha(bool reverse = false)
+        public string ToInLineAlpha(bool reverse = false)
         {
-            Color c = _color.Color;
+            Color c = CColor.Color;
 
             if (reverse)
             {
                 c = Color.FromArgb(255 - c.A, c.R, c.G, c.B);
             }
-            string alpha = C_Color.toString(c, C_Color.ColorMethod.ABGR).Substring(0, 2);
+            string alpha = C_Color.ToString(c, C_Color.ColorMethod.ABGR).Substring(0, 2);
 
             return "&H" + alpha + "&";
         }

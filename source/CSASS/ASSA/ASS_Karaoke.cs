@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace CSASS
 {
     public class ASS_Karaoke
     {
-        private string _text = "";
-        private long _duration = 0;
-        private long _start = 0;
-        private long _end = 0;
+        //private string KaraText = "";
+        //private long KaraDuration = 0;
+        //private long KaraStart = 0;
+        //private long KaraEnd = 0;
 
         public ASS_Karaoke()
         {
@@ -29,39 +28,39 @@ namespace CSASS
             {
                 //kara._syllables.Clear();
 
-                kara._text = text;
-                kara._start = start;
-                kara._end = end;
-                kara._duration = end - start;
+                //kara.KaraText = text;
+                //kara.KaraStart = start;
+                //kara.KaraEnd = end;
+                //kara.KaraDuration = end - start;
 
-                string ns;
-                ns = text.Replace("\\K", "\\k");
-                ns = ns.Replace("\\ko", "\\k");
-                ns = ns.Replace("\\kf", "\\k");
+                //string ns;
+                //ns = text.Replace("\\K", "\\k");
+                //ns = ns.Replace("\\ko", "\\k");
+                //ns = ns.Replace("\\kf", "\\k");
 
-                long startsyl = 0;
+                //long startsyl = 0;
 
-                Regex r = new Regex(@"\{[\\k]{1}(\d+)\}(\w+)");
-                Match m = r.Match(ns);
+                //Regex r = new Regex(@"\{[\\k]{1}(\d+)\}(\w+)");
+                //Match m = r.Match(ns);
 
-                while (m.Success)
-                {
-                    long dur_centi = Convert.ToInt32(m.Groups[1].Value);
-                    long dur_milli = dur_centi * 10;
+                //while (m.Success)
+                //{
+                //    long dur_centi = Convert.ToInt32(m.Groups[1].Value);
+                //    long dur_milli = dur_centi * 10;
 
-                    //ASS_K_Syllable syl = new ASS_K_Syllable(
-                    //    m.Groups[2].Value,
-                    //    startsyl + start,
-                    //    startsyl + start + dur_milli,
-                    //    text);
+                //    //ASS_K_Syllable syl = new ASS_K_Syllable(
+                //    //    m.Groups[2].Value,
+                //    //    startsyl + start,
+                //    //    startsyl + start + dur_milli,
+                //    //    text);
 
-                    //kara._syllables.Add(syl);
+                //    //kara._syllables.Add(syl);
 
-                    startsyl += dur_milli;
+                //    startsyl += dur_milli;
 
 
-                    m.NextMatch();
-                }
+                //    m.NextMatch();
+                //}
             }
 
             return kara;

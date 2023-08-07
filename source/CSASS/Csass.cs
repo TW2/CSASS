@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using CSASS.ASSA;
 using CSASS.Common;
 
@@ -9,36 +6,33 @@ namespace CSASS
 {
     public class Csass : ICloneable
     {
-        private ASS_IO ass = new ASS_IO();
-        private SSA_IO ssa = new SSA_IO();
+        private readonly ASS_IO AssKlass = new ASS_IO();
+        private readonly SSA_IO SsaKlass = new SSA_IO();
 
         private string videoPath = null;
 
         public string VideoPath { get => videoPath; set => videoPath = value; }
 
-        public Csass()
-        {
-            
-        }
+        public Csass() { }
 
         public void LoadASS(string path)
         {
-            ass.LoadASS(path);
+            AssKlass.LoadASS(path);
         }
 
-        public void SaveASS(string path, string software = "CSASS library", string website = "unknown")
+        public void SaveASS(string path, string software = null, string website = null, string email = null)
         {
-            ass.SaveASS(path, software, website);
+            AssKlass.SaveASS(path, software, website, email);
         }
 
         public void LoadSSA(string path)
         {
-            ssa.LoadSSA(path);
+            SsaKlass.LoadSSA(path);
         }
 
-        public void SaveSSA(string path, string software = "CSASS library", string website = "unknown")
+        public void SaveSSA(string path, string software = null, string website = null, string email = null)
         {
-            ssa.SaveSSA(path, software, website);
+            SsaKlass.SaveSSA(path, software, website, email);
         }
 
         /// <summary>
@@ -59,7 +53,7 @@ namespace CSASS
         public void AddAssEvent(C_Event.EventType evType, int layer, string start, string end, string style, string name_or_actor,
             int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
-            ass.AddEvent(evType, layer, start, end, style, name_or_actor,
+            AssKlass.AddEvent(evType, layer, start, end, style, name_or_actor,
                 marginL, marginR, marginV, effect, text, index);
         }
 
@@ -69,7 +63,7 @@ namespace CSASS
         /// <param name="index">Index of the event in Events</param>
         public void RemoveAssEvent(int index)
         {
-            ass.RemoveEvent(index);
+            AssKlass.RemoveEvent(index);
         }
 
         /// <summary>
@@ -90,7 +84,7 @@ namespace CSASS
         public void AddSsaEvent(C_Event.EventType evType, int marked, string start, string end, string style, string name_or_actor,
             int marginL, int marginR, int marginV, string effect, string text, int index = -1)
         {
-            ssa.AddEvent(evType, marked, start, end, style, name_or_actor,
+            SsaKlass.AddEvent(evType, marked, start, end, style, name_or_actor,
                 marginL, marginR, marginV, effect, text, index);
         }
 
@@ -100,7 +94,7 @@ namespace CSASS
         /// <param name="index">Index of the event in Events</param>
         public void RemoveSsaEvent(int index)
         {
-            ssa.RemoveEvent(index);
+            SsaKlass.RemoveEvent(index);
         }
 
         public object Clone()

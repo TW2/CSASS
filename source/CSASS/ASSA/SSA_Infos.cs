@@ -1,34 +1,26 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSASS.ASSA
 {
     public class SSA_Infos
     {
         //[Script Info]
-        private string Title { get; set; } = "";
-        private string OriginalScript { get; set; } = "";
-        private string OriginalTranslation { get; set; } = "";
-        private string OriginalEditing { get; set; } = "";
-        private string OriginalTiming { get; set; } = "";
-        private string OriginalScriptChecking { get; set; } = "";
-        private string ScriptType { get; } = "v4.00";
-        private int PlayResX { get; set; } = 1280;
-        private int PlayResY { get; set; } = 720;
-        private int PlayDepth { get; set; } = 0;
-        private string Wav { get; set; } = "";
-        private string LastWav { get; set; } = "";
-        private float Timer { get; set; } = 100f;
+        public string Title { get; set; } = "";
+        public string OriginalScript { get; set; } = "";
+        public string OriginalTranslation { get; set; } = "";
+        public string OriginalEditing { get; set; } = "";
+        public string OriginalTiming { get; set; } = "";
+        public string OriginalScriptChecking { get; set; } = "";
+        public string ScriptType { get; } = "v4.00";
+        public int PlayResX { get; set; } = 1280;
+        public int PlayResY { get; set; } = 720;
+        public int PlayDepth { get; set; } = 0;
+        public string Wav { get; set; } = "";
+        public string LastWav { get; set; } = "";
+        public float Timer { get; set; } = 100f;
 
-        public SSA_Infos()
-        {
-
-        }
+        public SSA_Infos() { }
 
         public void TryAdd(string rawline)
         {

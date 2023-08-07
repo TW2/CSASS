@@ -6,11 +6,11 @@ namespace CSASS.ASSA
 {
     public class SSA_Color
     {
-        private C_Color _color;
+        public C_Color CColor { get; set; }
 
         private SSA_Color()
         {
-            _color = new C_Color(Color.Red);
+            CColor = new C_Color(Color.Red);
         }
 
         public static SSA_Color Create()
@@ -21,14 +21,14 @@ namespace CSASS.ASSA
         public static SSA_Color Create(Color color)
         {
             SSA_Color ac = new SSA_Color();
-            ac._color.Color = color;
+            ac.CColor.Color = color;
             return ac;
         }
 
         public static SSA_Color Create(int color)
         {
             SSA_Color ac = new SSA_Color();
-            ac._color.Color = Color.FromArgb(color);
+            ac.CColor.Color = Color.FromArgb(color);
             return ac;
         }
 
@@ -37,25 +37,25 @@ namespace CSASS.ASSA
             return Create(Convert.ToInt32(color));
         }
 
-        public string toStyleColor()
+        public string ToStyleColor()
         {
-            return Convert.ToString(_color.Color.R * _color.Color.G * _color.Color.B);
+            return Convert.ToString(CColor.Color.R * CColor.Color.G * CColor.Color.B);
         }
 
-        public string toInLineColor()
+        public string ToInLineColor()
         {
-            return "&H" + C_Color.toString(_color.Color, C_Color.ColorMethod.BGR) + "&";
+            return "&H" + C_Color.ToString(CColor.Color, C_Color.ColorMethod.BGR) + "&";
         }
 
-        public string toInLineAlpha(bool reverse = false)
+        public string ToInLineAlpha(bool reverse = false)
         {
-            Color c = _color.Color;
+            Color c = CColor.Color;
 
             if (reverse)
             {
                 c = Color.FromArgb(255 - c.A, c.R, c.G, c.B);
             }
-            string alpha = C_Color.toString(c, C_Color.ColorMethod.ABGR).Substring(0, 2);
+            string alpha = C_Color.ToString(c, C_Color.ColorMethod.ABGR).Substring(0, 2);
 
             return "&H" + alpha + "&";
         }

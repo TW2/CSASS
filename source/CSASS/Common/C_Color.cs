@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CSASS.Common
 {
     public class C_Color
     {
-        private Color _c_color;
+        private Color MyColor;
 
         public enum ColorMethod
         {
@@ -18,10 +14,10 @@ namespace CSASS.Common
 
         public C_Color(Color color)
         {
-            _c_color = color;
+            MyColor = color;
         }
 
-        public static string toString(Color c, ColorMethod m = ColorMethod.BGR)
+        public static string ToString(Color c, ColorMethod m = ColorMethod.BGR)
         {
             int red = c.R;
             int green = c.G;
@@ -38,7 +34,7 @@ namespace CSASS.Common
             if(b.Length == 1) b = "0" + b;
             if(a.Length == 1) a = "0" + a;
 
-            string v = string.Empty;
+            string v;
 
             switch (m)
             {
@@ -54,7 +50,7 @@ namespace CSASS.Common
             return v;
         }
 
-        public static Color toColor(string s, ColorMethod m = ColorMethod.BGR)
+        public static Color ToColor(string s, ColorMethod m = ColorMethod.BGR)
         {
             string r = string.Empty;
             string g = string.Empty;
@@ -109,44 +105,44 @@ namespace CSASS.Common
 
         public Color Color
         {
-            get { return _c_color; }
-            set { _c_color = value; }
+            get { return MyColor; }
+            set { MyColor = value; }
         }
 
         public string BGR
         {
-            get { return toString(_c_color); }
-            set { toColor(value); }
+            get { return ToString(MyColor); }
+            set { ToColor(value); }
         }
 
         public string RGB
         {
-            get { return toString(_c_color, ColorMethod.RGB); }
-            set { toColor(value, ColorMethod.RGB); }
+            get { return ToString(MyColor, ColorMethod.RGB); }
+            set { ToColor(value, ColorMethod.RGB); }
         }
 
         public string BGRA
         {
-            get { return toString(_c_color, ColorMethod.BGRA); }
-            set { toColor(value, ColorMethod.BGRA); }
+            get { return ToString(MyColor, ColorMethod.BGRA); }
+            set { ToColor(value, ColorMethod.BGRA); }
         }
 
         public string RGBA
         {
-            get { return toString(_c_color, ColorMethod.RGBA); }
-            set { toColor(value, ColorMethod.RGBA); }
+            get { return ToString(MyColor, ColorMethod.RGBA); }
+            set { ToColor(value, ColorMethod.RGBA); }
         }
 
         public string ABGR
         {
-            get { return toString(_c_color, ColorMethod.ABGR); }
-            set { toColor(value, ColorMethod.ABGR); }
+            get { return ToString(MyColor, ColorMethod.ABGR); }
+            set { ToColor(value, ColorMethod.ABGR); }
         }
 
         public string ARGB
         {
-            get { return toString(_c_color, ColorMethod.ARGB); }
-            set { toColor(value, ColorMethod.ARGB); }
+            get { return ToString(MyColor, ColorMethod.ARGB); }
+            set { ToColor(value, ColorMethod.ARGB); }
         }
     }
 }

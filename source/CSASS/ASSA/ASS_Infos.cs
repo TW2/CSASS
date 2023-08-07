@@ -1,37 +1,40 @@
 ﻿using System;
+using System.Drawing.Drawing2D;
+using System.IO;
+using System.Security.Cryptography;
 
 namespace CSASS
 {
     public class ASS_Infos
     {
         //[Script Info]
-        private string _title = "";
-        private string _original_script = "";
-        private string _original_translation = "";
-        private string _original_editing = "";
-        private string _original_timing = "";
-        private string _original_script_checking = "";
-        private string _scripttype = "v4.00+";
-        private int _playresX = 1280;
-        private int _playresY = 720;
-        private int _playdepth = 0;
-        private string _wav = "";
-        private string _lastwav = "";
-        private float _timer = 100f;
-        private int _wrapstyle = 0;
-        private string _video_aspect_ratio = "";
-        private string _video_zoom = "";
-        private string _ycbcr_matrix = "";
+        public string Title { get; set; } = "";
+        public string OriginalScript { get; set; } = "";
+        public string OriginalTranslation { get; set; } = "";
+        public string OriginalEditing { get; set; } = "";
+        public string OriginalTiming { get; set; } = "";
+        public string OriginalScriptChecking { get; set; } = "";
+        public string ScriptType { get; } = "v4.00+";
+        public int PlayResX { get; set; } = 1280;
+        public int PlayResY { get; set; } = 720;
+        public int PlayDepth { get; set; } = 0;
+        public string Wav { get; set; } = "";
+        public string LastWav { get; set; } = "";
+        public float Timer { get; set; } = 100f;
+        public int WrapStyle { get; set; } = 0;
+        public string VideoAspectRatio { get; set; } = "";
+        public string VideoZoom { get; set; } = "";
+        public string YCbCrMatrix { get; set; } = "";
 
         //[Aegisub Project Garbage]
-        private string _last_style_storage = "";
-        private string _audio_file = "";
-        private string _video_file = "";
-        private string _video_ar_mode = "";
-        private string _video_ar_value = "";
-        private string _video_zoom_percent = "";
-        private string _active_line = "";
-        private string _video_position = "";
+        public string LastStyleStorage { get; set; } = "";
+        public string AudioFile { get; set; } = "";
+        public string VideoFile { get; set; } = "";
+        public string VideoArMode { get; set; } = "";
+        public string VideoArValue { get; set; } = "";
+        public string VideoZoomPercent { get; set; } = "";
+        public string ActiveLine { get; set; } = "";
+        public string VideoPosition { get; set; } = "";
 
         public ASS_Infos()
         {
@@ -40,181 +43,217 @@ namespace CSASS
 
         public void TryAdd(string rawline)
         {
-            if (rawline.StartsWith("Title")) { _title = rawline.Substring("Title: ".Length); }
-            if (rawline.StartsWith("Original Script")) { _original_script = rawline.Substring("Original Script: ".Length); }
-            if (rawline.StartsWith("Original Translation")) { _original_translation = rawline.Substring("Original Translation: ".Length); }
-            if (rawline.StartsWith("Original Editing")) { _original_editing = rawline.Substring("Original Editing: ".Length); }
-            if (rawline.StartsWith("Original Timing")) { _original_timing = rawline.Substring("Original Timing: ".Length); }
-            if (rawline.StartsWith("Original Script Checking")) { _original_script_checking = rawline.Substring("Original Script Checking: ".Length); }
-            if (rawline.StartsWith("ScriptType")) { _scripttype = rawline.Substring("ScriptType: ".Length); }
-            if (rawline.StartsWith("PlayResX")) { _playresX = Convert.ToInt32(rawline.Substring("PlayResX: ".Length)); }
-            if (rawline.StartsWith("PlayResY")) { _playresY = Convert.ToInt32(rawline.Substring("PlayResY: ".Length)); }
-            if (rawline.StartsWith("PlayDepth")) { _playdepth = Convert.ToInt32(rawline.Substring("PlayDepth: ".Length)); }
-            if (rawline.StartsWith("Wav")) { _wav = rawline.Substring("Wav: ".Length); }
-            if (rawline.StartsWith("LastWav")) { _lastwav = rawline.Substring("LastWav: ".Length); }
-            if (rawline.StartsWith("Timer")) { _timer = Convert.ToSingle(rawline.Substring("Timer: ".Length)); }
-            if (rawline.StartsWith("WrapStyle")) { _wrapstyle = Convert.ToInt32(rawline.Substring("WrapStyle: ".Length)); }
-            if (rawline.StartsWith("Video Aspect Ratio")) { _video_aspect_ratio = rawline.Substring("Video Aspect Ratio: ".Length); }
-            if (rawline.StartsWith("Video Zoom")) { _video_zoom = rawline.Substring("Video Zoom: ".Length); }
-            if (rawline.StartsWith("YCbCr Matrix")) { _ycbcr_matrix = rawline.Substring("YCbCr Matrix: ".Length); }
-            if (rawline.StartsWith("Last Style Storage")) { _last_style_storage = rawline.Substring("Last Style Storage: ".Length); }
-            if (rawline.StartsWith("Audio File")) { _audio_file = rawline.Substring("Audio File: ".Length); }
-            if (rawline.StartsWith("Video File")) { _video_file = rawline.Substring("Video File: ".Length); }
-            if (rawline.StartsWith("Video AR Mode")) { _video_ar_mode = rawline.Substring("Video AR Mode: ".Length); }
-            if (rawline.StartsWith("Video AR Value")) { _video_ar_value = rawline.Substring("Video AR Value: ".Length); }
-            if (rawline.StartsWith("Video Zoom Percent")) { _video_zoom_percent = rawline.Substring("Video Zoom Percent: ".Length); }
-            if (rawline.StartsWith("Active Line")) { _active_line = rawline.Substring("Active Line: ".Length); }
-            if (rawline.StartsWith("Video Position")) { _video_position = rawline.Substring("Video Position: ".Length); }
+            if (rawline.StartsWith("Title")) { Title = rawline.Substring("Title: ".Length); }
+            if (rawline.StartsWith("Original Script")) { OriginalScript = rawline.Substring("Original Script: ".Length); }
+            if (rawline.StartsWith("Original Translation")) { OriginalTranslation = rawline.Substring("Original Translation: ".Length); }
+            if (rawline.StartsWith("Original Editing")) { OriginalEditing = rawline.Substring("Original Editing: ".Length); }
+            if (rawline.StartsWith("Original Timing")) { OriginalTiming = rawline.Substring("Original Timing: ".Length); }
+            if (rawline.StartsWith("Original Script Checking")) { OriginalScriptChecking = rawline.Substring("Original Script Checking: ".Length); }
+            if (rawline.StartsWith("PlayResX")) { PlayResX = Convert.ToInt32(rawline.Substring("PlayResX: ".Length)); }
+            if (rawline.StartsWith("PlayResY")) { PlayResY = Convert.ToInt32(rawline.Substring("PlayResY: ".Length)); }
+            if (rawline.StartsWith("PlayDepth")) { PlayDepth = Convert.ToInt32(rawline.Substring("PlayDepth: ".Length)); }
+            if (rawline.StartsWith("Wav")) { Wav = rawline.Substring("Wav: ".Length); }
+            if (rawline.StartsWith("LastWav")) { LastWav = rawline.Substring("LastWav: ".Length); }
+            if (rawline.StartsWith("Timer")) { Timer = Convert.ToSingle(rawline.Substring("Timer: ".Length)); }
+            if (rawline.StartsWith("WrapStyle")) { WrapStyle = Convert.ToInt32(rawline.Substring("WrapStyle: ".Length)); }
+            if (rawline.StartsWith("Video Aspect Ratio")) { VideoAspectRatio = rawline.Substring("Video Aspect Ratio: ".Length); }
+            if (rawline.StartsWith("Video Zoom")) { VideoZoom = rawline.Substring("Video Zoom: ".Length); }
+            if (rawline.StartsWith("YCbCr Matrix")) { YCbCrMatrix = rawline.Substring("YCbCr Matrix: ".Length); }
+            if (rawline.StartsWith("Last Style Storage")) { LastStyleStorage = rawline.Substring("Last Style Storage: ".Length); }
+            if (rawline.StartsWith("Audio File")) { AudioFile = rawline.Substring("Audio File: ".Length); }
+            if (rawline.StartsWith("Video File")) { VideoFile = rawline.Substring("Video File: ".Length); }
+            if (rawline.StartsWith("Video AR Mode")) { VideoArMode = rawline.Substring("Video AR Mode: ".Length); }
+            if (rawline.StartsWith("Video AR Value")) { VideoArValue = rawline.Substring("Video AR Value: ".Length); }
+            if (rawline.StartsWith("Video Zoom Percent")) { VideoZoomPercent = rawline.Substring("Video Zoom Percent: ".Length); }
+            if (rawline.StartsWith("Active Line")) { ActiveLine = rawline.Substring("Active Line: ".Length); }
+            if (rawline.StartsWith("Video Position")) { VideoPosition = rawline.Substring("Video Position: ".Length); }
         }
 
-        public string Title
+        public void WriteASSInfos(StreamWriter sw, string software, string website, string email)
         {
-            get { return _title; }
-            set { _title = value; }
-        }
+            sw.WriteLine("[Script Info]");
+            sw.WriteLine("; This is a Sub Station Alpha v4+ script.");
+            if (software != null && software != string.Empty)
+            {
+                sw.WriteLine("; For " + software + " info and downloads,");
 
-        public string OriginalScript
-        {
-            get { return _original_script; }
-            set { _original_script = value; }
-        }
+                if (website != null && website != string.Empty)
+                {
+                    sw.WriteLine("; go to " + website);
 
-        public string OriginalTranslation
-        {
-            get { return _original_translation; }
-            set { _original_translation = value; }
-        }
+                    if (email != null && email != string.Empty)
+                    {
+                        sw.WriteLine("; or email " + email);
+                    }
+                }
 
-        public string OriginalEditing
-        {
-            get { return _original_editing; }
-            set { _original_editing = value; }
-        }
+            }
 
-        public string OriginalTiming
-        {
-            get { return _original_timing; }
-            set { _original_timing = value; }
-        }
+            if (Title != null && Title != string.Empty)
+            {
+                sw.WriteLine("Title: " + Title);
+            }
 
-        public string OriginalScriptChecking
-        {
-            get { return _original_script_checking; }
-            set { _original_script_checking = value; }
-        }
+            if (OriginalScript != null && OriginalScript != string.Empty)
+            {
+                sw.WriteLine("Original Script: " + OriginalScript);
+            }
 
-        public string ScriptType
-        {
-            get { return _scripttype; }
-            set { _scripttype = value; }
-        }
+            if (OriginalTranslation != null && OriginalTranslation != string.Empty)
+            {
+                sw.WriteLine("Original Translation: " + OriginalTranslation);
+            }
 
-        public int PlayResX
-        {
-            get { return _playresX; }
-            set { _playresX = value; }
-        }
+            if (OriginalEditing != null && OriginalEditing != string.Empty)
+            {
+                sw.WriteLine("Original Editing: " + OriginalEditing);
+            }
 
-        public int PlayResY
-        {
-            get { return _playresY; }
-            set { _playresY = value; }
-        }
+            if (OriginalTiming != null && OriginalTiming != string.Empty)
+            {
+                sw.WriteLine("Original Timing: " + OriginalTiming);
+            }
 
-        public int PlayDepth
-        {
-            get { return _playdepth; }
-            set { _playdepth = value; }
-        }
+            if (OriginalScriptChecking != null && OriginalScriptChecking != string.Empty)
+            {
+                sw.WriteLine("Original Script Checking: " + OriginalScriptChecking);
+            }
 
-        public string Wav
-        {
-            get { return _wav; }
-            set { _wav = value; }
-        }
+            sw.WriteLine("ScriptType: " + ScriptType);
+            sw.WriteLine("Collisions: Normal"); // TODO change and add variable
 
-        public string LastWav
-        {
-            get { return _lastwav; }
-            set { _lastwav = value; }
-        }
+            if (PlayResX > 0)
+            {
+                sw.WriteLine("PlayResX: " + PlayResX);
+            }
 
-        public float Timer
-        {
-            get { return _timer; }
-            set { _timer = value; }
-        }
+            if (PlayResY > 0)
+            {
+                sw.WriteLine("PlayResY: " + PlayResY);
+            }
 
-        public int WrapStyle
-        {
-            get { return _wrapstyle; }
-            set { _wrapstyle = value; }
-        }
+            if (PlayDepth > 0)
+            {
+                sw.WriteLine("PlayDepth: " + PlayDepth);
+            }
 
-        public string VideoAspectRatio
-        {
-            get { return _video_aspect_ratio; }
-            set { _video_aspect_ratio = value; }
-        }
+            if (Wav != null && Wav != string.Empty)
+            {
+                sw.WriteLine("Wav: " + Wav);
+            }
 
-        public string VideoZoom
-        {
-            get { return _video_zoom; }
-            set { _video_zoom = value; }
-        }
+            if (LastWav != null && LastWav != string.Empty)
+            {
+                sw.WriteLine("LastWav: " + LastWav);
+            }
 
-        public string YCbCrMatrix
-        {
-            get { return _ycbcr_matrix; }
-            set { _ycbcr_matrix = value; }
-        }
+            string strTimer = Convert.ToString(Timer);
+            string strTimerFilled = "100,0000";
+            if (strTimer != null && strTimer != string.Empty)
+            {
+                if (strTimer.Contains("."))
+                {
+                    string[] table = strTimer.Split('.');
+                    string b, a = table[0];
 
-        public string LastStyleStorage
-        {
-            get { return _last_style_storage; }
-            set { _last_style_storage = value; }
-        }
+                    if (table[1].Length > 4)
+                    {
+                        b = table[1].Substring(0, 4);
+                    }
+                    else if (table[1].Length == 4)
+                    {
+                        b = table[1];
+                    }
+                    else if (table[1].Length == 3)
+                    {
+                        b = table[1] + "0";
+                    }
+                    else if (table[1].Length == 2)
+                    {
+                        b = table[1] + "00";
+                    }
+                    else if (table[1].Length == 1)
+                    {
+                        b = table[1] + "000";
+                    }
+                    else
+                    {
+                        b = "0000";
+                    }
 
-        public string AudioFile
-        {
-            get { return _audio_file; }
-            set { _audio_file = value; }
-        }
+                    strTimerFilled = a + "," + b;
+                }
+                else
+                {
+                    strTimerFilled = strTimer + ",0000";
+                }
+            }
 
-        public string VideoFile
-        {
-            get { return _video_file; }
-            set { _video_file = value; }
-        }
+            sw.WriteLine("Timer: " + strTimerFilled);
 
-        public string VideoARMode
-        {
-            get { return _video_ar_mode; }
-            set { _video_ar_mode = value; }
-        }
+            if (WrapStyle >= 0 && WrapStyle <= 3)
+            {
+                sw.WriteLine("WrapStyle: " + WrapStyle);
+            }
 
-        public string VideoARValue
-        {
-            get { return _video_ar_value; }
-            set { _video_ar_value = value; }
-        }
+            if (VideoAspectRatio != null && VideoAspectRatio != string.Empty)
+            {
+                sw.WriteLine("Video Aspect Ratio: " + VideoAspectRatio);
+            }
 
-        public string VideoZoomPercent
-        {
-            get { return _video_zoom_percent; }
-            set { _video_zoom_percent = value; }
-        }
+            if (VideoZoom != null && VideoZoom != string.Empty)
+            {
+                sw.WriteLine("Video Zoom: " + VideoZoom);
+            }
 
-        public string ActiveLine
-        {
-            get { return _active_line; }
-            set { _active_line = value; }
-        }
+            if (YCbCrMatrix != null && YCbCrMatrix != string.Empty)
+            {
+                sw.WriteLine("YCbCr Matrix: " + YCbCrMatrix);
+            }
+            sw.WriteLine("");
 
-        public string VideoPosition
-        {
-            get { return _video_position; }
-            set { _video_position = value; }
+            sw.WriteLine("[Aegisub Project Garbage]");
+            if (LastStyleStorage != null && LastStyleStorage != string.Empty)
+            {
+                sw.WriteLine("Last Style Storage: " + LastStyleStorage);
+            }
+
+            if (AudioFile != null && AudioFile != string.Empty)
+            {
+                sw.WriteLine("Audio File: " + AudioFile);
+            }
+
+            if (VideoFile != null && VideoFile != string.Empty)
+            {
+                sw.WriteLine("Video File: " + VideoFile);
+            }
+
+            if (VideoArMode != null && VideoArMode != string.Empty)
+            {
+                sw.WriteLine("Video AR Mode: " + VideoArMode);
+            }
+
+            if (VideoArValue != null && VideoArValue != string.Empty)
+            {
+                sw.WriteLine("Video AR Value: " + VideoArValue);
+            }
+
+            if (VideoZoomPercent != null && VideoZoomPercent != string.Empty)
+            {
+                sw.WriteLine("Video Zoom Percent: " + VideoZoomPercent);
+            }
+
+            if (ActiveLine != null && ActiveLine != string.Empty)
+            {
+                sw.WriteLine("Active Line: " + ActiveLine);
+            }
+
+            if (VideoPosition != null && VideoPosition != string.Empty)
+            {
+                sw.WriteLine("Video Position: " + VideoPosition);
+            }
+
+            sw.WriteLine();
         }
     }
 }

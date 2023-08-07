@@ -1,29 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace CSASS.Common
 {
     public class C_Time
     {
-        private long _nanos;
+        public long Nanos { get; set; } = 0;
 
-        public C_Time()
-        {
-            _nanos = 0;
-        }
+        public C_Time() { }
 
-        public C_Time(long nanos)
-        {
-            _nanos = nanos;
-        }
-
-        public long Nanos { get; set; }
-
-        public static C_Time fromString(string str)
+        public static C_Time FromString(string str)
         {
             C_Time time = new C_Time();
 
@@ -53,7 +39,7 @@ namespace CSASS.Common
                 int s = Convert.ToInt32(sec);
                 int ms = Convert.ToInt32(millis);
 
-                time._nanos = Convert.ToInt64(
+                time.Nanos = Convert.ToInt64(
                     Math.Pow(ms, 6) +
                     Math.Pow(s * 1000, 6) +
                     Math.Pow(mn * 60000, 6) +
@@ -64,7 +50,7 @@ namespace CSASS.Common
             return time;
         }
 
-        public static string toASSA(long nanos)
+        public static string ToASSA(long nanos)
         {
             double mst = (double)nanos / 1_000_000d;
 

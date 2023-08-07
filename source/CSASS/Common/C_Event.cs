@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CSASS.Common
+﻿namespace CSASS.Common
 {
     public class C_Event
     {
@@ -31,7 +25,7 @@ namespace CSASS.Common
 
         public C_Event() { }
 
-        public static string fromEventTypeToString(EventType type)
+        public static string FromEventTypeToString(EventType type)
         {
             switch (type)
             {
